@@ -3,8 +3,8 @@ from datetime import datetime
 
 
 class ManipulatorDate:
-    @staticmethod
-    def get_oldest_manufacturing_date(data: List[Dict]):
+    @classmethod
+    def get_oldest_manufacturing_date(cls, data: List[Dict]):
         old_date = min(
             data,
             key=lambda product:
@@ -12,8 +12,8 @@ class ManipulatorDate:
         )
         return old_date["data_de_fabricacao"]
 
-    @staticmethod
-    def get_earliest_expiration_date(data: List[Dict]):
+    @classmethod
+    def get_earliest_expiration_date(cls, data: List[Dict]):
         TODAY = datetime.now().strftime("%Y-%m-%d")
         dates = [
                     product["data_de_validade"]
