@@ -10,8 +10,6 @@ class SimpleReport:
         early_expiration = ManipulatorDate.get_earliest_expiration_date(data)
         name = CounterBusiness.counter_business_with_more_products(data)
 
-        return (
-            f'Data de fabricação mais antiga: {old_manufacturing}\n'
-            f'Data de validade mais próxima: {early_expiration}\n'
-            f'Empresa com mais produtos: {name}'
-        )
+        return f"""Data de fabricação mais antiga: {old_manufacturing}
+Data de validade mais próxima: {early_expiration}
+Empresa com mais produtos: {name}"""

@@ -4,16 +4,15 @@ from inventory_report.importer.importer import Importer
 
 class XmlImporter(Importer):
     @classmethod
-    def import_data(cls, path: str = './inventory_report/data/inventory.xml'):
+    def import_data(cls, path: str):
         with open(path) as file:
             try:
-                if not path.endswith('.xml'):
-                    raise ValueError('Arquivo inválido')
+                if not path.endswith(".xml"):
+                    raise ValueError("Arquivo inválido")
                 data = XmlReader.parse(file).getroot()
-
                 return cls.format_data_xml(data)
             except FileNotFoundError:
-                raise ValueError('Arquivo inválido')
+                raise ValueError("Arquivo inválido")
 
     @classmethod
     def format_data_xml(cls, data):
@@ -24,6 +23,3 @@ class XmlImporter(Importer):
                 product[info.tag] = info.text
             products.append(product)
         return products
-
-
-print(XmlImporter.import_data())
